@@ -45,7 +45,7 @@ map.on('click', 'places', (e) => {
     .setHTML(
         `<div class="info">
 
-            <div class="img"><img src="img/${id}.jpg"></img></div>
+            <div class="img"><img class="background"src="img/${id}.jpg"></img></div>
 
             <div class="card">
             <a class="link" href=${link}><img class ="instagram" src="icon/instagram.png"></img></a>
