@@ -1,0 +1,256 @@
+html, body {
+    margin: 0; 
+    padding: 0;
+    font-family: 'Inter', sans-serif; 
+}
+
+/* ФУТЕР */
+footer {
+    height: 8%;
+}
+
+.footer {
+    display: inline;
+    width: 100%;
+}
+
+.logo {
+    position: absolute;
+    width: 120px;
+    height: 29px;
+    left: 60px;
+    top: 21px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 29px;
+    letter-spacing: -0.04em;
+    color: #101010;
+}
+
+nav {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    width: 200px;
+    height: 20px;
+    right: 60px;
+    top: 30px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 20px;
+    color: #101010;
+}
+
+    nav ul {
+        padding: 0;
+        margin: 0;
+    }
+
+    nav li {
+        display: inline;
+        list-style-type: none;
+    }
+
+    nav li + li:before {
+        content: "/ ";
+    }
+
+/* КАРТА */
+#map {
+    position: absolute; 
+    top: 72px; 
+    bottom: 0; 
+    width: 100%; 
+}
+
+/* ОБРАБОТКА СТОРОННИХ СТИЛЕЙ */
+.mapboxgl-popup {
+    max-width: 280px !important;
+}
+
+.mapboxgl-popup-tip {
+    display: none;
+}
+
+.mapboxgl-popup-content {
+    border-radius: 12px !important;
+    width: 280px;
+    min-height: 400px;
+    height: auto;
+    padding: 0 !important;
+}
+
+/* ОКОШКО ИНФОРМАЦИИ О КАФЕ */
+.info {
+    width: 280px;
+    border-radius: 12px;
+    font-family: 'Inter', sans-serif;
+}
+
+    .img {
+        width:280px;
+        height: 280px;
+        border-radius: 12px 12px 0 0;
+    }
+
+    img {
+        width:280px;
+        height: 280px;
+        border-radius: 12px 12px 0 0;
+        object-fit:cover;
+    }
+
+    .card {
+        margin: 16px;
+    }
+
+        .status {
+            color:#1B7340;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 12px;
+            line-height: 17px;
+            opacity: 0.8;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .name {
+            font-style: normal;
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 24px;
+            margin-bottom: 4px;
+        }
+
+        .address { 
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 20px;
+            margin-bottom: 4px;
+            color: #101010;
+            opacity: 0.6;
+        }
+
+        .positions {
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 20px;
+            margin-bottom: 4px;
+            opacity: 0.6;
+        }
+
+        .card a {
+            position: absolute;
+            top: 292px;
+            left: 243px;
+            z-index: 23;
+            /* background-image: url(icon/instagram.png);
+            background-repeat: no-repeat; */
+        }
+        .instagram {
+            width: 23px;
+            height: 23px;
+        }
+/* МОБИЛЬНАЯ ВЕРСИЯ */
+@media screen and (max-width: 600px) {
+    .mapboxgl-popup {
+        max-width: 304px !important;
+    }
+    .mapboxgl-popup-content {
+        width: 304px;
+        min-height: 104px;
+        height: auto;
+    }
+
+    .info {
+        display:flex;
+        flex-direction:row;
+        width: 304px;
+        min-height: 104px;
+        border-radius: 12px;
+        font-family: 'Inter', sans-serif;
+        overflow: hidden;
+    }
+    
+    .img {
+        position: absolute;
+        top:0;
+        left: 0;
+        width: 104px;
+        height: 100%;
+        border-radius: 12px 0 0 12px;
+        margin: 0;
+        padding: 0;
+        min-height: 104px;
+    }
+    
+    img {
+        width: 104px;
+        height: 100%;
+        min-height: 104px;
+        border-radius: 12px 0 0 12px;
+        object-fit:cover;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .card {
+        margin-left: 104px;
+        width: 180px;
+        min-width: 180px;
+        margin: 12px auto 12px 116px;
+    }
+    
+    .status {
+        color:#1B7340;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 10px;
+        line-height: 14px;
+        text-transform: uppercase;
+        margin-bottom: 4px;
+    }
+    
+    .name {
+        font-style: normal;
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 16px;
+        margin-bottom: 4px;
+    }
+    
+    .address {
+        font-style: normal;
+        font-weight: normal;
+        font-size: 11px;
+        line-height: 16px;
+        margin-bottom: 4px;
+        color: #101010;
+        opacity: 0.6;
+    }
+    
+    .positions {
+        font-style: normal;
+        font-weight: normal;
+        font-size: 11px;
+        line-height: 16px;
+        opacity: 0.6;
+        margin-bottom: 4px;
+    }
+    
+    .card a {
+        position: absolute;
+        width: 23px;
+        height: 23px;
+        top: 8px;
+        left: 270px;
+    }
+  }
