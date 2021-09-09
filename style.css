@@ -68,29 +68,20 @@ nav {
 }
 
 /* ОБРАБОТКА СТОРОННИХ СТИЛЕЙ */
+.mapboxgl-ctrl-bottom-left,  .mapboxgl-ctrl-bottom-right {
+    display: none !important;
+}
 
 
+#selected-marker {
+    background-image: url('icon/marker.png');
+    background-size: cover;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+}
 
-.my-icon {
-    border-radius: 100%;
-    width: 20px;
-    height: 20px;
-    text-align: center;
-    line-height: 20px;
-    color: white;
-  }
-  
-  .icon-dc {
-    background: #3bb2d0;
-  }
-  
-  .icon-sf {
-    background: #3bb2d0;
-  }
-
-
-
-  
 .mapboxgl-popup {
     max-width: 280px !important;
 }
@@ -183,6 +174,7 @@ nav {
         .instagram {
             width: 23px;
             height: 23px;
+            border-radius: 0;
         }
 /* МОБИЛЬНАЯ ВЕРСИЯ */
 @media screen and (max-width: 600px) {

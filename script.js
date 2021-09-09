@@ -7,6 +7,13 @@ center: [30.398653, 59.940737],
 zoom: 9.75
 });
 
+map.on('click', () => {
+    var markerCheck = document.getElementById("selected-marker");
+    if (markerCheck) {
+        markerCheck.remove();
+    }
+});
+
 map.on('click', 'places', (e) => {
     const coordinates = e.features[0].geometry.coordinates.slice();
     var moveX = e.features[0].geometry.coordinates[0];
@@ -19,7 +26,6 @@ map.on('click', 'places', (e) => {
     var positions = shopProp.positions;
     var id = shopProp.id;
 
-
 // Ensure that if the map is zoomed out such that multiple
 // copies of the feature are visible, the popup appears
 // over the copy being pointed to.
@@ -31,14 +37,14 @@ map.on('click', 'places', (e) => {
     const markerRadius = 10;
     const linearOffset = 10;
     const popupOffsets = {
-    'top': [10, 10],
-    'top-left': [10, 10],
-    'top-right': [10, 10],
-    'bottom': [10, -markerHeight],
-    'bottom-left': [linearOffset, (markerHeight - markerRadius + linearOffset) * -1],
-    'bottom-right': [-linearOffset, (markerHeight - markerRadius + linearOffset) * -1],
-    'left': [markerRadius, (markerHeight - markerRadius) * -1],
-    'right': [-markerRadius, (markerHeight - markerRadius) * -1]
+        'top': [10, 10],
+        'top-left': [10, 10],
+        'top-right': [10, 10],
+        'bottom': [10, -markerHeight],
+        'bottom-left': [linearOffset, (markerHeight - markerRadius + linearOffset) * -1],
+        'bottom-right': [-linearOffset, (markerHeight - markerRadius + linearOffset) * -1],
+        'left': [markerRadius, (markerHeight - markerRadius) * -1],
+        'right': [-markerRadius, (markerHeight - markerRadius) * -1]
     };
 
     new mapboxgl.Popup({offset: popupOffsets, className: 'info-div'})
@@ -60,7 +66,13 @@ map.on('click', 'places', (e) => {
     
     )
     .addTo(map);
-
+//Выбранный маркер
+    var marker = document.createElement('div');
+    marker.id = 'selected-marker';
+    new mapboxgl.Marker(marker)
+    .setLngLat(coordinates)
+    .addTo(map);
+//Анимация "полета" к маркеру
     map.flyTo({center: [moveX, moveY], zoom: 12});
 });
 
