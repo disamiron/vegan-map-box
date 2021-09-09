@@ -68,6 +68,29 @@ nav {
 }
 
 /* ОБРАБОТКА СТОРОННИХ СТИЛЕЙ */
+
+
+
+.my-icon {
+    border-radius: 100%;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+    color: white;
+  }
+  
+  .icon-dc {
+    background: #3bb2d0;
+  }
+  
+  .icon-sf {
+    background: #3bb2d0;
+  }
+
+
+
+  
 .mapboxgl-popup {
     max-width: 280px !important;
 }
@@ -164,18 +187,27 @@ nav {
 /* МОБИЛЬНАЯ ВЕРСИЯ */
 @media screen and (max-width: 600px) {
     .mapboxgl-popup {
-        max-width: 304px !important;
+        width: 100%;
+        max-width: 404px !important;
+        transform: translate(-50%, -50%) !important;
+        top: 85% !important;
+        left: 50% !important;
+        margin-left: auto;
+        margin-right: auto;
     }
     .mapboxgl-popup-content {
-        width: 304px;
+        min-width: 304px;
+        width: 90%;
         min-height: 104px;
         height: auto;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .info {
         display:flex;
         flex-direction:row;
-        width: 304px;
+        width: 100%;
         min-height: 104px;
         border-radius: 12px;
         font-family: 'Inter', sans-serif;
@@ -206,9 +238,9 @@ nav {
     
     .card {
         margin-left: 104px;
-        width: 180px;
+        width: 95%;
         min-width: 180px;
-        margin: 12px auto 12px 116px;
+        margin: 12px 12px 12px 116px;
     }
     
     .status {
@@ -222,6 +254,8 @@ nav {
     }
     
     .name {
+        max-width: 150px;
+        /* min-height: 36px; */
         font-style: normal;
         font-weight: 600;
         font-size: 12px;
@@ -250,13 +284,17 @@ nav {
     
     .card a {
         position: absolute;
-        width: 23px;
-        height: 23px;
-        top: 8px;
-        left: 270px;
+        width: 50px;
+        height: 50px;
+        top: 0;
+        left: 86%;
     }
     .instagram {
+        position: absolute;
+        top: 8px;
+        left: 13px;
         width: 23px;
-        height: auto;
+        height: 23px;
+        background-size: cover;
     }
   }

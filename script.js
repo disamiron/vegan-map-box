@@ -1,7 +1,8 @@
 mapboxgl.accessToken = 'pk.eyJ1Ijoic3RhcnRzZXZkZXYiLCJhIjoiY2t0NGJzYTFvMHdrbzJucjFnN3I3czZpZSJ9.90wyuWzjUJGVVKDdS5FqdQ';
+
 const map = new mapboxgl.Map({
 container: 'map',
-style: 'mapbox://styles/startsevdev/ckt8vtvmh3r2z17nsfsvkio59',
+style: 'mapbox://styles/startsevdev/cktaa3f6s6p0v18qwp5yn8ejz',
 center: [30.398653, 59.940737],
 zoom: 9.75
 });
@@ -26,19 +27,19 @@ map.on('click', 'places', (e) => {
     coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
     }
 
-        const markerHeight = 10;
-        const markerRadius = 10;
-        const linearOffset = 10;
-        const popupOffsets = {
-        'top': [10, 10],
-        'top-left': [10, 10],
-        'top-right': [10, 10],
-        'bottom': [10, -markerHeight],
-        'bottom-left': [linearOffset, (markerHeight - markerRadius + linearOffset) * -1],
-        'bottom-right': [-linearOffset, (markerHeight - markerRadius + linearOffset) * -1],
-        'left': [markerRadius, (markerHeight - markerRadius) * -1],
-        'right': [-markerRadius, (markerHeight - markerRadius) * -1]
-        };
+    const markerHeight = 10;
+    const markerRadius = 10;
+    const linearOffset = 10;
+    const popupOffsets = {
+    'top': [10, 10],
+    'top-left': [10, 10],
+    'top-right': [10, 10],
+    'bottom': [10, -markerHeight],
+    'bottom-left': [linearOffset, (markerHeight - markerRadius + linearOffset) * -1],
+    'bottom-right': [-linearOffset, (markerHeight - markerRadius + linearOffset) * -1],
+    'left': [markerRadius, (markerHeight - markerRadius) * -1],
+    'right': [-markerRadius, (markerHeight - markerRadius) * -1]
+    };
 
     new mapboxgl.Popup({offset: popupOffsets, className: 'info-div'})
     .setLngLat(coordinates)
