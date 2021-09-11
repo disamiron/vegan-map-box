@@ -11,7 +11,7 @@ map.on('click', () => {
     var markerCheck = document.getElementById("selected-marker");
     if (markerCheck) {
         markerCheck.remove();
-    }
+    };
 });
 
 map.on('click', 'places', (e) => {
@@ -25,7 +25,11 @@ map.on('click', 'places', (e) => {
     var address = shopProp.address;
     var positions = shopProp.positions;
     var id = shopProp.id;
-
+    // console.log("coordinates="+coordinates);
+    // console.log("moveX="+moveX);
+    // console.log("moveY="+moveY);
+    // console.log(shopProp);
+    var windowWidth = (window.innerWidth >= 600) ? (0.015) : 0.015;
 // Ensure that if the map is zoomed out such that multiple
 // copies of the feature are visible, the popup appears
 // over the copy being pointed to.
@@ -47,12 +51,20 @@ map.on('click', 'places', (e) => {
         'right': [-markerRadius, (markerHeight - markerRadius) * -1]
     };
 
+function checkImages (id) {
+    var src = "img/"+id+".jpg";
+    src.onerror = function() {
+        src = "img/"+id+".png";
+    };
+    return src;
+}
+
     new mapboxgl.Popup({offset: popupOffsets, className: 'info-div'})
     .setLngLat(coordinates)
     .setHTML(
         `<div class="info">
 
-            <div class="img"><img class="background"src="img/${id}.jpg"></img></div>
+            <div class="img"><img class="background"src=${checkImages(id)}></img></div>
 
             <div class="card">
             <a class="link" href=${link}><img class ="instagram" src="icon/instagram.png"></img></a>
@@ -66,14 +78,16 @@ map.on('click', 'places', (e) => {
     
     )
     .addTo(map);
+    //Анимация "полета" к маркеру
+    
+    map.flyTo({center: [moveX, moveY + windowWidth], zoom: 12.5});
 //Выбранный маркер
     var marker = document.createElement('div');
     marker.id = 'selected-marker';
     new mapboxgl.Marker(marker)
-    .setLngLat(coordinates)
+    .setLngLat([moveX, moveY])
     .addTo(map);
-//Анимация "полета" к маркеру
-    map.flyTo({center: [moveX, moveY], zoom: 12});
+
 });
 
 // Change the cursor to a pointer when the mouse is over the places layer.

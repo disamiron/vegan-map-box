@@ -4,6 +4,7 @@
   <head>
     <meta charset="utf-8">
     <title>Vegan Map</title>
+    <link rel="shortcut icon" href="icon/veganIcon.png" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="style.css">
     <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
     <script defer src="script.js"></script>
@@ -19,14 +20,26 @@
 
     <footer>
       <div class="footer">
-        <div class="logo">vegan map</div>
-          <nav>
-            <ul>
-              <li>Бот</li>
-              <li>Instagram</li>
-              <li>Связаться</li>
-            </ul>
-          </nav>
+        <img class="logoImg" src="icon/veganIcon.png"></img>
+        <div class="logo">
+          vegan map
+        </div>
+        <div class="telegram">
+          Бот в Telegram
+        </div>
+        <div>
+        <input id="toggle-menu" type="checkbox" />
+        <label class="toggle-btn" for="toggle-menu">
+          <span></span>
+        </label>
+
+          <ul class="menu-box">
+            <li>Предложить заведение</li>
+            <li>Связаться</li>
+            <li>Instagram</li>
+          </ul>
+
+      </div>
       </div>
     </footer>
 

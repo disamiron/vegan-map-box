@@ -6,19 +6,30 @@ html, body {
 
 /* ФУТЕР */
 footer {
-    height: 8%;
+    height: 72px;
 }
 
 .footer {
     display: inline;
     width: 100%;
 }
-
+#toggle-menu, .toggle-btn{
+    display: none;
+}
+.logoImg {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: 11px;
+    left: 60px;
+    object-fit:cover;
+    border-radius: 0;
+}
 .logo {
     position: absolute;
     width: 120px;
-    height: 29px;
-    left: 60px;
+    height: 22px;
+    left: 120px;
     top: 21px;
     font-family: Inter;
     font-style: normal;
@@ -26,37 +37,48 @@ footer {
     font-size: 24px;
     line-height: 29px;
     letter-spacing: -0.04em;
-    color: #101010;
+    
 }
-
-nav {
-    margin: 0;
-    padding: 0;
+.telegram {
     position: absolute;
-    width: 200px;
-    height: 20px;
-    right: 60px;
-    top: 30px;
+    width: 120px;
+    height: 22px;
+    left: calc(50% - (60px));
+    top: 24px;
     font-family: Inter;
     font-style: normal;
     font-weight: normal;
-    font-size: 14px;
-    line-height: 20px;
-    color: #101010;
+    font-size: 16px;
+    line-height: 22px;
 }
 
-    nav ul {
+
+    ul {
         padding: 0;
         margin: 0;
+        position: absolute;
+    height: 20px;
+    right: 60px;
+    top: 24px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 20px;
     }
 
-    nav li {
+    li {
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 22px;
         display: inline;
         list-style-type: none;
+        margin: 0 12px;
     }
-
+    
     nav li + li:before {
-        content: "/ ";
+        content: "    ";
     }
 
 /* КАРТА */
@@ -178,6 +200,12 @@ nav {
         }
 /* МОБИЛЬНАЯ ВЕРСИЯ */
 @media screen and (max-width: 600px) {
+    footer {
+        height: 48px;
+    }
+    #map {
+        top: 48px;
+    }
     .mapboxgl-popup {
         width: 100%;
         max-width: 404px !important;
@@ -289,4 +317,171 @@ nav {
         height: 23px;
         background-size: cover;
     }
+
+
+
+
+    .logoImg {
+
+        width: 32px;
+        height: 32px;
+        top: 8px;
+        left: 8px;
+        background-size: cover;
+        border-radius: 0;
+    }
+    .logo {
+        position: absolute;
+        width: 120px;
+        height: 22px;
+        left: 47px;
+        top: 10px;
+        font-family: Inter;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 29px;
+        letter-spacing: -0.04em;
+        
+    }
+    .telegram {
+        position: absolute;
+        width: 100px;
+        height: 22px;
+        top: 17px;
+        font-family: Inter;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 12px;
+        line-height: 15px;
+        left: calc(100% - (150px)) !important;
+    }
+    
+    
+        ul {
+            padding: 0;
+            margin: 0;
+            position: absolute;
+        height: 20px;
+        right: 60px;
+        top: 24px;
+        font-family: Inter;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 12px;
+        line-height: 15px;
+        }
+    
+        li {
+            font-style: normal;
+            font-weight: normal;
+            font-size: 12px;
+            line-height: 15px;
+            margin-right: 60px !important;
+            margin-bottom: 45px;
+        }
+        .menu-box {
+
+            top: 48px !important;
+            left: 0px;
+
+
+          }
+
+          .toggle-btn {
+
+            top: 16px !important;
+            right: 16px !important;
+            width: 20px !important;
+            height: 20px !important;
+
+        }
+
+
+
+
+
   }
+
+          /* бургер */
+    @media screen and (max-width: 1130px) {
+        .telegram {
+
+            left: calc(100% - (180px));
+            margin-right: 40px;
+
+        }
+
+
+    .toggle-btn {
+        display: flex;
+        align-items: center;
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        width: 26px;
+        height: 26px;
+        cursor: pointer;
+        z-index: 1;
+    }
+
+    .toggle-btn > span,
+    .toggle-btn > span::before,
+    .toggle-btn > span::after {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #616161;
+    }
+    .toggle-btn > span::before {
+    content: '';
+    top: -8px;
+    }
+    .toggle-btn > span::after {
+    content: '';
+    top: 8px;
+    }
+/* контейнер меню */
+.menu-box {
+    margin: 0;
+    padding: 0;
+    display: block;
+    position: absolute;
+    visibility: hidden;
+    top: 64px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    list-style: none;
+    text-align: right;
+    background-color: #ffffff;
+    z-index: 1;
+  }
+  /* элементы меню */
+  li {
+    display: block;
+    margin-right: 60px;
+    margin-bottom: 20px;
+    text-decoration: none;
+    z-index: 1;
+  }
+  li:hover {
+    background-color: #CFD8DC;
+  }
+  #toggle-menu:checked ~ .toggle-btn > span {
+    transform: rotate(45deg);
+  }
+  #toggle-menu:checked ~ .toggle-btn > span::before {
+    top: 0;
+    transform: rotate(0);
+  }
+  #toggle-menu:checked ~ .toggle-btn > span::after {
+    top: 0;
+    transform: rotate(90deg);
+  }
+  #toggle-menu:checked ~ .menu-box {
+    visibility: visible;
+
+  }  
+}
