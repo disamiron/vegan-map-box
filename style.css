@@ -37,7 +37,7 @@ footer {
     font-size: 24px;
     line-height: 29px;
     letter-spacing: -0.04em;
-    
+    white-space: nowrap;
 }
 
 .telegram {
@@ -51,6 +51,7 @@ footer {
     font-weight: normal;
     font-size: 16px;
     line-height: 22px;
+    white-space: nowrap;
 }
 
 .telegram a {
@@ -88,6 +89,7 @@ footer {
         display: inline;
         list-style-type: none;
         margin: 0 12px;
+        white-space: nowrap;
     }
     
 /* КАРТА */
@@ -488,7 +490,7 @@ footer {
   }
 
   /* элементы меню */
-  
+
   li {
     display: block;
     margin-right: 60px;
