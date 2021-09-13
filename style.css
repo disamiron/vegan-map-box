@@ -219,16 +219,17 @@ footer {
     }
     .mapboxgl-popup {
         width: 100%;
-        max-width: 404px !important;
+        max-width: 800px !important;
         transform: translate(-50%, -50%) !important;
-        top: 85% !important;
+        top: auto !important;
+        bottom: -16px !important;
         left: 50% !important;
         margin-left: auto;
         margin-right: auto;
     }
     .mapboxgl-popup-content {
         min-width: 304px;
-        width: 90%;
+        width: calc(100% - (16px));
         min-height: 104px;
         height: auto;
         margin-left: auto;
@@ -272,6 +273,7 @@ footer {
         width: 95%;
         min-width: 180px;
         margin: 12px 12px 12px 116px;
+        word-wrap: break-word; 
     }
     
     .status {
@@ -282,6 +284,7 @@ footer {
         line-height: 14px;
         text-transform: uppercase;
         margin-bottom: 4px;
+        word-wrap: break-word; 
     }
     
     .name {
@@ -292,6 +295,7 @@ footer {
         font-size: 12px;
         line-height: 16px;
         margin-bottom: 4px;
+        word-wrap: break-word; 
     }
     
     .address {
@@ -302,6 +306,7 @@ footer {
         margin-bottom: 4px;
         color: #101010;
         opacity: 0.6;
+        word-wrap: break-word; 
     }
     
     .positions {
@@ -311,6 +316,7 @@ footer {
         line-height: 16px;
         opacity: 0.6;
         margin-bottom: 4px;
+        word-wrap: break-word; 
     }
     
     .card a {
@@ -365,6 +371,7 @@ footer {
         font-weight: normal;
         font-size: 12px;
         line-height: 15px;
+        /*ываываыва*/
         left: calc(100% - (150px)) !important;
     }
     
@@ -401,7 +408,7 @@ footer {
 
           .toggle-btn {
 
-            top: 16px !important;
+            top: 14px !important;
             right: 16px !important;
             width: 20px !important;
             height: 20px !important;

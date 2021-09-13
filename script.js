@@ -3,16 +3,10 @@ mapboxgl.accessToken = 'pk.eyJ1Ijoic3RhcnRzZXZkZXYiLCJhIjoiY2t0NGJzYTFvMHdrbzJuc
 const map = new mapboxgl.Map({
 container: 'map',
 style: 'mapbox://styles/startsevdev/cktaa3f6s6p0v18qwp5yn8ejz',
-center: [30.398653, 59.940737],
-zoom: 9.75
+center: [30.308653, 59.939737],
+zoom: 12
 });
 
-map.on('click', () => {
-    var markerCheck = document.getElementById("selected-marker");
-    if (markerCheck) {
-        markerCheck.remove();
-    };
-});
 
 map.on('click', 'places', (e) => {
     const coordinates = e.features[0].geometry.coordinates.slice();
@@ -33,6 +27,13 @@ map.on('click', 'places', (e) => {
 // Ensure that if the map is zoomed out such that multiple
 // copies of the feature are visible, the popup appears
 // over the copy being pointed to.
+
+
+var markerCheck = document.getElementById("selected-marker");
+if (markerCheck) {
+    markerCheck.remove();
+};
+
     while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
     coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
     }
@@ -78,9 +79,7 @@ function checkImages (id) {
     
     )
     .addTo(map);
-    //Анимация "полета" к маркеру
-    
-    map.flyTo({center: [moveX, moveY + windowWidth], zoom: 12.5});
+
 //Выбранный маркер
     var marker = document.createElement('div');
     marker.id = 'selected-marker';
