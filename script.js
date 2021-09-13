@@ -29,7 +29,7 @@ map.on('click', 'places', (e) => {
     // console.log("moveX="+moveX);
     // console.log("moveY="+moveY);
     // console.log(shopProp);
-    var windowWidth = (window.innerWidth >= 600) ? (0.015) : 0.015;
+    var windowWidth = (window.innerWidth >= 820) ? (0.015) : 0.001;
 // Ensure that if the map is zoomed out such that multiple
 // copies of the feature are visible, the popup appears
 // over the copy being pointed to.
@@ -37,14 +37,14 @@ map.on('click', 'places', (e) => {
     coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
     }
 
-    const markerHeight = 10;
-    const markerRadius = 10;
-    const linearOffset = 10;
+    const markerHeight = 18;
+    const markerRadius = 18;
+    const linearOffset = 18;
     const popupOffsets = {
-        'top': [10, 10],
-        'top-left': [10, 10],
-        'top-right': [10, 10],
-        'bottom': [10, -markerHeight],
+        'top': [18, 18],
+        'top-left': [18, 18],
+        'top-right': [18, 18],
+        'bottom': [18, -markerHeight],
         'bottom-left': [linearOffset, (markerHeight - markerRadius + linearOffset) * -1],
         'bottom-right': [-linearOffset, (markerHeight - markerRadius + linearOffset) * -1],
         'left': [markerRadius, (markerHeight - markerRadius) * -1],
@@ -112,3 +112,4 @@ function checkImages (id) {
         showUserHeading: true
         })
 );
+
