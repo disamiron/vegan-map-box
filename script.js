@@ -86,7 +86,6 @@ function checkImages (id) {
     new mapboxgl.Marker(marker)
     .setLngLat([moveX, moveY])
     .addTo(map);
-
 });
 
 // Change the cursor to a pointer when the mouse is over the places layer.

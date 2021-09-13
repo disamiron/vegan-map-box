@@ -1,7 +1,8 @@
 html, body {
     margin: 0; 
     padding: 0;
-    font-family: 'Inter', sans-serif; 
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: subpixel-antialiased;
 }
 
 /* ФУТЕР */
@@ -20,7 +21,8 @@ footer {
     height: 50px;
     top: 11px;
     left: 60px;
-    object-fit:cover;
+    -o-object-fit:cover;
+       object-fit:cover;
     border-radius: 0;
 }
 .logo {
@@ -128,7 +130,8 @@ footer {
     min-height: 400px;
     height: auto;
     padding: 0 !important;
-    box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.1) !important;
+    -webkit-box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.1) !important;
+            box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.1) !important;
 }
 
 /* ОКОШКО ИНФОРМАЦИИ О КАФЕ */
@@ -136,8 +139,6 @@ footer {
     width: 280px;
     border-radius: 12px;
     font-family: 'Inter', sans-serif;
-    
-    
 }
 
     .img {
@@ -150,7 +151,8 @@ footer {
         width:280px;
         height: 280px;
         border-radius: 12px 12px 0 0;
-        object-fit:cover;
+        -o-object-fit:cover;
+           object-fit:cover;
     }
 
     .card {
@@ -209,7 +211,9 @@ footer {
             height: 23px;
             border-radius: 0;
         }
+
 /* МОБИЛЬНАЯ ВЕРСИЯ */
+
 @media screen and (max-width: 820px) {
     footer {
         height: 48px;
@@ -220,7 +224,9 @@ footer {
     .mapboxgl-popup {
         width: 100%;
         max-width: 800px !important;
-        transform: translate(-50%, -50%) !important;
+        -webkit-transform: translate(-50%, -50%) !important;
+            -ms-transform: translate(-50%, -50%) !important;
+                transform: translate(-50%, -50%) !important;
         top: auto !important;
         bottom: -16px !important;
         left: 50% !important;
@@ -237,8 +243,13 @@ footer {
     }
 
     .info {
+        display:-webkit-box;
+        display:-ms-flexbox;
         display:flex;
-        flex-direction:row;
+        -webkit-box-orient:horizontal;
+        -webkit-box-direction:normal;
+            -ms-flex-direction:row;
+                flex-direction:row;
         width: 100%;
         min-height: 104px;
         border-radius: 12px;
@@ -263,7 +274,8 @@ footer {
         height: 100%;
         min-height: 104px;
         border-radius: 12px 0 0 12px;
-        object-fit:cover;
+        -o-object-fit:cover;
+           object-fit:cover;
         margin: 0;
         padding: 0;
     }
@@ -335,9 +347,6 @@ footer {
         background-size: cover;
     }
 
-
-
-
     .logoImg {
 
         width: 32px;
@@ -347,6 +356,7 @@ footer {
         background-size: cover;
         border-radius: 0;
     }
+
     .logo {
         position: absolute;
         width: 120px;
@@ -361,6 +371,7 @@ footer {
         letter-spacing: -0.04em;
         
     }
+
     .telegram {
         position: absolute;
         width: 100px;
@@ -374,20 +385,19 @@ footer {
         /*ываываыва*/
         left: calc(100% - (150px)) !important;
     }
-    
-    
+
         ul {
             padding: 0;
             margin: 0;
             position: absolute;
-        height: 20px;
-        right: 60px;
-        top: 24px;
-        font-family: Inter;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 12px;
-        line-height: 15px;
+            height: 20px;
+            right: 60px;
+            top: 24px;
+            font-family: Inter;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 12px;
+            line-height: 15px;
         }
     
         li {
@@ -415,25 +425,23 @@ footer {
 
         }
 
+}
 
 
-
-
-  }
-
-          /* бургер */
     @media screen and (max-width: 1130px) {
         .telegram {
-
             left: calc(100% - (180px));
             margin-right: 40px;
-
         }
 
 
     .toggle-btn {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        align-items: center;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
         position: fixed;
         top: 20px;
         right: 20px;
@@ -460,7 +468,9 @@ footer {
     content: '';
     top: 8px;
     }
+
 /* контейнер меню */
+
 .menu-box {
     margin: 0;
     padding: 0;
@@ -476,7 +486,9 @@ footer {
     background-color: #ffffff;
     z-index: 1;
   }
+
   /* элементы меню */
+  
   li {
     display: block;
     margin-right: 60px;
@@ -486,15 +498,21 @@ footer {
   }
 
   #toggle-menu:checked ~ .toggle-btn > span {
-    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
   }
   #toggle-menu:checked ~ .toggle-btn > span::before {
     top: 0;
-    transform: rotate(0);
+    -webkit-transform: rotate(0);
+        -ms-transform: rotate(0);
+            transform: rotate(0);
   }
   #toggle-menu:checked ~ .toggle-btn > span::after {
     top: 0;
-    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+            transform: rotate(90deg);
   }
   #toggle-menu:checked ~ .menu-box {
     visibility: visible;
@@ -503,12 +521,18 @@ footer {
     .toggle-btn > span,
     .toggle-btn > span::before,
     .toggle-btn > span::after {
-        transition-duration: .25s;
+        -webkit-transition-duration: .25s;
+             -o-transition-duration: .25s;
+                transition-duration: .25s;
     }
     .menu-box {
-        transition-duration: .25s;
+        -webkit-transition-duration: .25s;
+             -o-transition-duration: .25s;
+                transition-duration: .25s;
     }
     .li {
-        transition-duration: .25s;
+        -webkit-transition-duration: .25s;
+             -o-transition-duration: .25s;
+                transition-duration: .25s;
     }
 }
