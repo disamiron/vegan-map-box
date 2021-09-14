@@ -3,6 +3,7 @@ html, body {
     padding: 0;
     font-family: 'Inter', sans-serif;
     -webkit-font-smoothing: antialiased;
+    overflow:  hidden;
 }
 
 /* ФУТЕР */
@@ -449,7 +450,10 @@ footer {
             height: 24px !important;
 
         }
-
+        .mapboxgl-ctrl-group button {
+            width: 42px !important;
+            height: 42px !important;
+        }
 }
 
 
