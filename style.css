@@ -17,7 +17,7 @@ footer {
 
 .logoImg {
     position: absolute;
-    width: 187px;
+    width: 192.7px;
     height: 50px;
     top: 11px;
     left: 60px;
@@ -137,9 +137,21 @@ footer {
             box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.1) !important;
 }
 .mapboxgl-ctrl-top-right {
-    top: calc(50% - (40px)) !important; 
+    top: calc(50% - (60px)) !important; 
 }
-
+.mapboxgl-ctrl {
+    border-radius: 50% !important;
+}
+.mapboxgl-ctrl-group button {
+    width: 48px !important;
+    height: 48px !important;
+    border-radius: 50% !important;
+}
+.mapboxgl-ctrl-icon {
+    background-image: url(icon/geoL.png) !important;
+    background-size: cover;
+    border-radius: 50% !important;
+}
 /* ОКОШКО ИНФОРМАЦИИ О КАФЕ */
 .info {
     width: 280px;
@@ -163,6 +175,8 @@ footer {
 
     .card {
         margin: 16px;
+        color: #101010;
+
     }
 
         .status {
@@ -187,17 +201,15 @@ footer {
 
         .address { 
             font-style: normal;
-            font-weight: normal;
+            font-weight: 400;
             font-size: 14px;
             line-height: 20px;
             margin-bottom: 4px;
-            color: #101010;
-            opacity: 0.6;
         }
 
         .positions {
             font-style: normal;
-            font-weight: normal;
+            font-weight: 400;
             font-size: 14px;
             line-height: 20px;
             margin-bottom: 4px;
@@ -219,15 +231,17 @@ footer {
             -o-object-fit:cover;
            object-fit:cover;
         }
-
+        button:active, button:focus {
+            outline: none;
+          }
 /* МОБИЛЬНАЯ ВЕРСИЯ */
 
 @media screen and (max-width: 820px) {
     footer {
-        height: 48px;
+        height: 56px;
     }
     #map {
-        top: 48px;
+        top: 56px;
     }
     .mapboxgl-popup {
         width: 100%;
@@ -235,8 +249,8 @@ footer {
         -webkit-transform: translate(-50%, -50%) !important;
             -ms-transform: translate(-50%, -50%) !important;
                 transform: translate(-50%, -50%) !important;
-        top: auto !important;
-        bottom: -16px !important;
+                top: calc(100% - 70px) !important;
+        /* bottom: -50px !important; */
         left: 50% !important;
         margin-left: auto;
         margin-right: auto;
@@ -308,7 +322,7 @@ footer {
     }
     
     .name {
-        max-width: 150px;
+        max-width: 75%;
         /* min-height: 36px; */
         font-style: normal;
         font-weight: 600;
@@ -320,18 +334,17 @@ footer {
     
     .address {
         font-style: normal;
-        font-weight: normal;
+        font-weight: 400;
         font-size: 11px;
         line-height: 16px;
         margin-bottom: 4px;
         color: #101010;
-        opacity: 0.6;
         word-wrap: break-word; 
     }
     
     .positions {
         font-style: normal;
-        font-weight: normal;
+        font-weight: 400;
         font-size: 11px;
         line-height: 16px;
         opacity: 0.6;
@@ -357,10 +370,10 @@ footer {
 
     .logoImg {
 
-        width: 118px;
-        height: 32px;
-        top: 8px;
-        left: 8px;
+        width: 131px;
+        height: 34px;
+        top: 11px;
+        left: 11px;
         background-size: cover;
         border-radius: 0;
     }
@@ -382,16 +395,16 @@ footer {
 
     .telegram {
         position: absolute;
-        width: 100px;
+        width: 102px;
         height: 22px;
-        top: 17px;
+        top: 18px;
         font-family: Inter;
         font-style: normal;
-        font-weight: normal;
-        font-size: 12px;
-        line-height: 15px;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 20px;
         /*ываываыва*/
-        left: calc(100% - (150px)) !important;
+        left: calc(100% - (158px)) !important;
     }
 
         ul {
@@ -399,22 +412,26 @@ footer {
             margin: 0;
             position: absolute;
             height: 20px;
-            right: 60px;
+            right: 56px;
             top: 24px;
             font-family: Inter;
             font-style: normal;
-            font-weight: normal;
-            font-size: 12px;
-            line-height: 15px;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 20px;
         }
     
         li {
             font-style: normal;
-            font-weight: normal;
-            font-size: 12px;
-            line-height: 15px;
-            margin-right: 60px !important;
-            margin-bottom: 45px;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 20px;
+            margin-right: 56px !important;
+            margin-bottom: 24px !important;
+        }
+
+        li:first-child {
+            margin-top: 10px !important;
         }
         .menu-box {
 
@@ -426,10 +443,10 @@ footer {
 
           .toggle-btn {
 
-            top: 14px !important;
-            right: 16px !important;
-            width: 20px !important;
-            height: 20px !important;
+            top: 16px !important;
+            right: 12px !important;
+            width: 24px !important;
+            height: 24px !important;
 
         }
 

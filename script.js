@@ -7,8 +7,18 @@ center: [30.308653, 59.939737],
 zoom: 12
 });
 
+// function checkBox () {
+
+//     if (window.innerWidth <= 820) {
+//         var mapBox = document.querySelector(".mapboxgl-popup");
+//         mapBox.style = "top : calc(100% - (" + ((mapBox.offsetHeight/2) + 8) + "px)) !important;";
+//         mapBox = null;
+//     }
+
+// }
 
 map.on('click', 'places', (e) => {
+
     const coordinates = e.features[0].geometry.coordinates.slice();
     var moveX = e.features[0].geometry.coordinates[0];
     var moveY = e.features[0].geometry.coordinates[1];
@@ -19,11 +29,12 @@ map.on('click', 'places', (e) => {
     var address = shopProp.address;
     var positions = shopProp.positions;
     var id = shopProp.id;
+    
     // console.log("coordinates="+coordinates);
     // console.log("moveX="+moveX);
     // console.log("moveY="+moveY);
     // console.log(shopProp);
-    var windowWidth = (window.innerWidth >= 820) ? (0.015) : 0.001;
+    // var windowWidth = (window.innerWidth >= 820) ? (0.015) : 0.001;
 // Ensure that if the map is zoomed out such that multiple
 // copies of the feature are visible, the popup appears
 // over the copy being pointed to.
@@ -38,17 +49,17 @@ if (markerCheck) {
     coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
     }
 
-    const markerHeight = 18;
-    const markerRadius = 18;
-    const linearOffset = 18;
+    const markerHeight = 20;
+    const markerRadius = 20;
+    const linearOffset = 20;
     const popupOffsets = {
-        'top': [18, 18],
-        'top-left': [18, 18],
-        'top-right': [18, 18],
-        'bottom': [18, -markerHeight],
+        'top': [20, 20],
+        'top-left': [20, 20],
+        'top-right': [20, 20],
+        'bottom': [20, -markerHeight],
         'bottom-left': [linearOffset, (markerHeight - markerRadius + linearOffset) * -1],
-        'bottom-right': [-linearOffset, (markerHeight - markerRadius + linearOffset) * -1],
-        'left': [markerRadius, (markerHeight - markerRadius) * -1],
+        'bottom-right': [linearOffset, (markerHeight - markerRadius + linearOffset) * -1],
+        'left': [markerRadius*2, (markerHeight - markerRadius) * -1],
         'right': [-markerRadius, (markerHeight - markerRadius) * -1]
     };
 
@@ -58,7 +69,9 @@ function checkImages (id) {
         src = "img/"+id+".png";
     };
     return src;
-}
+};
+
+
 
     new mapboxgl.Popup({offset: popupOffsets, className: 'info-div'})
     .setLngLat(coordinates)
@@ -79,8 +92,10 @@ function checkImages (id) {
     
     )
     .addTo(map);
+    
 
-//Выбранный маркер
+
+// //Выбранный маркер
     var marker = document.createElement('div');
     marker.id = 'selected-marker';
     new mapboxgl.Marker(marker)
