@@ -131,7 +131,6 @@ footer {
 .mapboxgl-popup-content {
     border-radius: 12px !important;
     width: 280px;
-    min-height: 400px;
     height: auto;
     padding: 0 !important;
     -webkit-box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.1) !important;
@@ -176,12 +175,10 @@ footer {
 
     .card {
         margin: 16px;
-        color: #101010;
 
     }
 
         .status {
-            color:#1B7340;
             font-style: normal;
             font-weight: 600;
             font-size: 12px;
@@ -225,12 +222,16 @@ footer {
             /* background-image: url(icon/instagram.png);
             background-repeat: no-repeat; */
         }
+        .link {
+            outline: none;
+        }
         .instagram {
             width: 23px;
             height: 23px;
             border-radius: 0;
             -o-object-fit:cover;
            object-fit:cover;
+           outline: none;
         }
         button:active, button:focus {
             outline: none;
@@ -312,11 +313,12 @@ footer {
     }
     
     .status {
-        color:#1B7340;
+        /* color:#1B7340; */
         font-style: normal;
         font-weight: 600;
-        font-size: 10px;
-        line-height: 14px;
+        font-size: 12px;
+        line-height: 17px;
+        letter-spacing: 0.02em;
         text-transform: uppercase;
         margin-bottom: 4px;
         word-wrap: break-word; 
@@ -327,8 +329,8 @@ footer {
         /* min-height: 36px; */
         font-style: normal;
         font-weight: 600;
-        font-size: 12px;
-        line-height: 16px;
+        font-size: 18px;
+        line-height: 24px;
         margin-bottom: 4px;
         word-wrap: break-word; 
     }
@@ -336,18 +338,17 @@ footer {
     .address {
         font-style: normal;
         font-weight: 400;
-        font-size: 11px;
-        line-height: 16px;
+        font-size: 14px;
+        line-height: 20px;
         margin-bottom: 4px;
-        color: #101010;
         word-wrap: break-word; 
     }
     
     .positions {
         font-style: normal;
         font-weight: 400;
-        font-size: 11px;
-        line-height: 16px;
+        font-size: 14px;
+        line-height: 20px;
         opacity: 0.6;
         margin-bottom: 4px;
         word-wrap: break-word; 

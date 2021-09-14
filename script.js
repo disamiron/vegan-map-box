@@ -2,7 +2,7 @@ mapboxgl.accessToken = 'pk.eyJ1Ijoic3RhcnRzZXZkZXYiLCJhIjoiY2t0NGJzYTFvMHdrbzJuc
 
 const map = new mapboxgl.Map({
 container: 'map',
-style: 'mapbox://styles/startsevdev/cktaa3f6s6p0v18qwp5yn8ejz',
+style: 'mapbox://styles/startsevdev/cktjy3gu04gvl18wb2slmtse1',
 center: [30.308653, 59.939737],
 zoom: 12
 });
@@ -18,7 +18,7 @@ zoom: 12
 // }
 
 map.on('click', 'places', (e) => {
-
+    
     const coordinates = e.features[0].geometry.coordinates.slice();
     var moveX = e.features[0].geometry.coordinates[0];
     var moveY = e.features[0].geometry.coordinates[1];
@@ -60,7 +60,7 @@ if (markerCheck) {
         'bottom-left': [linearOffset, (markerHeight - markerRadius + linearOffset) * -1],
         'bottom-right': [linearOffset, (markerHeight - markerRadius + linearOffset) * -1],
         'left': [markerRadius*2, (markerHeight - markerRadius) * -1],
-        'right': [-markerRadius, (markerHeight - markerRadius) * -1]
+        'right': [0, (markerHeight - markerRadius) * -1]
     };
 
 function checkImages (id) {
@@ -71,18 +71,36 @@ function checkImages (id) {
     return src;
 };
 
-
+function checkStatus (status) {
+    console.log(status);
+    switch (status) {
+        case "100% VEGAN":
+            positions = "";
+            return "#1B7340"
+        case "ТОЛЬКО КУХНЯ":
+            positions = "";
+            return "#1A8B9D"
+        case "БОЛЬШЕ ТРЁХ БЛЮД":
+            positions = "";
+            return "#2D73DB"
+        case "ДО ТРЁХ БЛЮД":
+            return "rgba(16, 16, 16, 0.5)"
+        default:
+            return "rgba(16, 16, 16, 0.5)"
+    }
+}
 
     new mapboxgl.Popup({offset: popupOffsets, className: 'info-div'})
     .setLngLat(coordinates)
     .setHTML(
+
         `<div class="info">
 
             <div class="img"><img class="background"src=${checkImages(id)}></img></div>
 
             <div class="card">
             <a class="link" href=${link}><img class ="instagram" src="icon/instagram.png"></img></a>
-                <div class="status">${status}</div>
+                <div class="status" style="color:${checkStatus(status)}">${status}</div>
                 <div class="name">${name}</div>
                 <div class="address">${address}</div>
                 <div class="positions">${positions}</div>
@@ -92,7 +110,6 @@ function checkImages (id) {
     
     )
     .addTo(map);
-    
 
 
 // //Выбранный маркер
