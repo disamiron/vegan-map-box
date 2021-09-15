@@ -100,7 +100,7 @@ footer {
     top: 72px; 
     bottom: 0; 
     width: 100%; 
-    height: calc(100% - (72px)) !important;
+    height: 100% !important;
 }
 
 /* ОБРАБОТКА СТОРОННИХ СТИЛЕЙ */
@@ -245,7 +245,7 @@ footer {
     }
     #map {
         top: 56px;
-        height: calc(100% - (56px)) !important;
+        height: 100% !important;
     }
     .mapboxgl-popup {
         width: 100%;
