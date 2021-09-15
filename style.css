@@ -123,6 +123,7 @@ footer {
 .mapboxgl-popup {
     max-width: 280px !important;
     left: -20px !important;
+    top: 0 !important;
 }
 
 .mapboxgl-popup-tip, .mapboxgl-popup-close-button {
@@ -254,7 +255,7 @@ footer {
         -webkit-transform: translate(-50%, -50%) !important;
             -ms-transform: translate(-50%, -50%) !important;
                 transform: translate(-50%, -50%) !important;
-        /* top: 0; */
+        top: -20% !important;
         /* bottom: -50px !important; */
         left: 50% !important;
         margin-left: auto;

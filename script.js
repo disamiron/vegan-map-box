@@ -103,23 +103,29 @@ map.on('click', 'places', (e) => {
     )
     .addTo(map);
 
-        
-// //Выбранный маркер
+
     var marker = document.createElement('div');
     marker.id = 'selected-marker';
     new mapboxgl.Marker(marker)
     .setLngLat([moveX, moveY])
     .addTo(map);   
 
-    $(function(){  
+//ФУНКЦИЯ ЧЕК РАЗМЕРА ОКНА
+    $(document).ready(function () {
+        updateContainer();
+        $(window).resize(function() {
+            updateContainer();
+        });
+    });
+//ПОЗИЦИОНИРОВАНИЕ МОБ popup
+    function updateContainer(){  
         if (window.innerWidth <= 820) {
             var mobilePopUp = $(".mapboxgl-popup");
-            mobilePopUp.css('top', ($(window).height() - ((mobilePopUp.height())) - 8 + ((mobilePopUp.height()/2)-60)));
-            console.log($(window).height())
-        }
-    });
-
+            mobilePopUp.attr('style', 'top: '+($(window).height() - ((mobilePopUp.height())) - 8 + ((mobilePopUp.height()/2)-60))+'px !important');
+        } 
+    };
 });
+
 
 // Change the cursor to a pointer when the mouse is over the places layer.
     map.on('mouseenter', 'places', () => {
