@@ -65,6 +65,13 @@ footer {
     display: none;
 }
 
+.telegram :hover {
+    color: #1B7340;
+}
+li a:hover {
+    color: #1B7340;
+}
+
 .menu-box a {
     color:#101010;
     text-decoration: none;
@@ -153,6 +160,10 @@ footer {
     background-image: url(icon/geoL.png) !important;
     background-size: cover;
     border-radius: 50% !important;
+}
+
+.mapboxgl-popup-anchor-bottom-left .mapboxgl-popup-anchor-bottom-right {
+    align-self:center !important;
 }
 /* ОКОШКО ИНФОРМАЦИИ О КАФЕ */
 .info {
@@ -344,6 +355,7 @@ footer {
         font-weight: 400;
         font-size: 14px;
         line-height: 20px;
+        margin-top: 10px;
         margin-bottom: 4px;
         word-wrap: break-word; 
     }
@@ -409,10 +421,11 @@ footer {
         font-weight: 400;
         font-size: 14px;
         line-height: 20px;
-        /*ываываыва*/
         left: calc(100% - (158px)) !important;
     }
-
+    .telegram :hover {
+        color: #101010
+    }
         ul {
             padding: 0;
             margin: 0;
@@ -436,6 +449,9 @@ footer {
             margin-bottom: 24px !important;
         }
 
+        li a:hover {
+            color: #101010;
+        }
         li:first-child {
             margin-top: 10px !important;
         }

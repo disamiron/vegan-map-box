@@ -7,18 +7,6 @@ center: [30.308653, 59.939737],
 zoom: 12
 });
 
-// function checkBox () {
-
-//     if (window.innerWidth <= 820) {
-//         var mapBox = document.querySelector(".info").parentNode.parentNode;
-//         var mobileHeight = document.documentElement.clientHeight;
-
-//         mapBox.style = "top : " + (mobileHeight - ((mapBox.offsetHeight)) - 8 + ((mapBox.offsetHeight/2)-60)) + "px";
-
-//     }
-
-// }
-
 map.on('click', 'places', (e) => {
     
     const coordinates = e.features[0].geometry.coordinates.slice();
@@ -125,6 +113,7 @@ map.on('click', 'places', (e) => {
         } 
     };
 });
+
 
 
 // Change the cursor to a pointer when the mouse is over the places layer.
