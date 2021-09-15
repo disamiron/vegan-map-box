@@ -248,6 +248,7 @@ footer {
         height: 100% !important;
     }
     .mapboxgl-popup {
+        position: fixed;
         width: 100%;
         max-width: 800px !important;
         -webkit-transform: translate(-50%, -50%) !important;

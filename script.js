@@ -7,17 +7,17 @@ center: [30.308653, 59.939737],
 zoom: 12
 });
 
-function checkBox () {
+// function checkBox () {
 
-    if (window.innerWidth <= 820) {
-        var mapBox = document.querySelector(".info").parentNode.parentNode;
-        var mobileHeight = document.documentElement.clientHeight;
+//     if (window.innerWidth <= 820) {
+//         var mapBox = document.querySelector(".info").parentNode.parentNode;
+//         var mobileHeight = document.documentElement.clientHeight;
 
-        mapBox.style = "top : " + (mobileHeight - ((mapBox.offsetHeight)) - 8 + ((mapBox.offsetHeight/2)-60)) + "px";
+//         mapBox.style = "top : " + (mobileHeight - ((mapBox.offsetHeight)) - 8 + ((mapBox.offsetHeight/2)-60)) + "px";
 
-    }
+//     }
 
-}
+// }
 
 map.on('click', 'places', (e) => {
     
@@ -102,8 +102,8 @@ map.on('click', 'places', (e) => {
     
     )
     .addTo(map);
-    
 
+        
 // //Выбранный маркер
     var marker = document.createElement('div');
     marker.id = 'selected-marker';
@@ -111,7 +111,14 @@ map.on('click', 'places', (e) => {
     .setLngLat([moveX, moveY])
     .addTo(map);   
 
-    setTimeout(checkBox, 1);    
+    $(function(){  
+        if (window.innerWidth <= 820) {
+            var mobilePopUp = $(".mapboxgl-popup");
+            mobilePopUp.css('top', ($(window).height() - ((mobilePopUp.height())) - 8 + ((mobilePopUp.height()/2)-60)));
+            console.log($(window).height())
+        }
+    });
+
 });
 
 // Change the cursor to a pointer when the mouse is over the places layer.
