@@ -7,15 +7,17 @@ center: [30.308653, 59.939737],
 zoom: 12
 });
 
-// function checkBox () {
+function checkBox () {
 
-//     if (window.innerWidth <= 820) {
-//         var mapBox = document.querySelector(".mapboxgl-popup");
-//         mapBox.style = "top : calc(100% - (" + ((mapBox.offsetHeight/2) + 8) + "px)) !important;";
-//         mapBox = null;
-//     }
+    if (window.innerWidth <= 820) {
+        var mapBox = document.querySelector(".info").parentNode.parentNode;
+        var mobileHeight = document.documentElement.clientHeight;
 
-// }
+        mapBox.style = "top : " + (mobileHeight - ((mapBox.offsetHeight)) - 8 + ((mapBox.offsetHeight/2)-60)) + "px";
+
+    }
+
+}
 
 map.on('click', 'places', (e) => {
     
@@ -30,20 +32,10 @@ map.on('click', 'places', (e) => {
     var positions = shopProp.positions;
     var id = shopProp.id;
     
-    // console.log("coordinates="+coordinates);
-    // console.log("moveX="+moveX);
-    // console.log("moveY="+moveY);
-    // console.log(shopProp);
-    // var windowWidth = (window.innerWidth >= 820) ? (0.015) : 0.001;
-// Ensure that if the map is zoomed out such that multiple
-// copies of the feature are visible, the popup appears
-// over the copy being pointed to.
-
-
-var markerCheck = document.getElementById("selected-marker");
-if (markerCheck) {
-    markerCheck.remove();
-};
+    var markerCheck = document.getElementById("selected-marker");
+    if (markerCheck) {
+        markerCheck.remove();
+    };
 
     while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
     coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
@@ -63,32 +55,32 @@ if (markerCheck) {
         'right': [0, (markerHeight - markerRadius) * -1]
     };
 
-function checkImages (id) {
-    var src = "img/"+id+".jpg";
-    src.onerror = function() {
-        src = "img/"+id+".png";
+    function checkImages (id) {
+        var src = "img/"+id+".jpg";
+        src.onerror = function() {
+            src = "img/"+id+".png";
+        };
+        return src;
     };
-    return src;
-};
 
-function checkStatus (status) {
-    console.log(status);
-    switch (status) {
-        case "100% VEGAN":
-            positions = "";
-            return "#1B7340"
-        case "ТОЛЬКО КУХНЯ":
-            positions = "";
-            return "#1A8B9D"
-        case "БОЛЬШЕ ТРЁХ БЛЮД":
-            positions = "";
-            return "#2D73DB"
-        case "ДО ТРЁХ БЛЮД":
-            return "rgba(16, 16, 16, 0.5)"
-        default:
-            return "rgba(16, 16, 16, 0.5)"
+    function checkStatus (status) {
+
+        switch (status) {
+            case "100% VEGAN":
+                positions = "";
+                return "#1B7340"
+            case "ТОЛЬКО КУХНЯ":
+                positions = "";
+                return "#1A8B9D"
+            case "БОЛЬШЕ ТРЁХ БЛЮД":
+                positions = "";
+                return "#2D73DB"
+            case "ДО ТРЁХ БЛЮД":
+                return "rgba(16, 16, 16, 0.5)"
+            default:
+                return "rgba(16, 16, 16, 0.5)"
+        }
     }
-}
 
     new mapboxgl.Popup({offset: popupOffsets, className: 'info-div'})
     .setLngLat(coordinates)
@@ -110,14 +102,16 @@ function checkStatus (status) {
     
     )
     .addTo(map);
-
+    
 
 // //Выбранный маркер
     var marker = document.createElement('div');
     marker.id = 'selected-marker';
     new mapboxgl.Marker(marker)
     .setLngLat([moveX, moveY])
-    .addTo(map);    
+    .addTo(map);   
+
+    setTimeout(checkBox, 1);    
 });
 
 // Change the cursor to a pointer when the mouse is over the places layer.
@@ -142,4 +136,3 @@ function checkStatus (status) {
         showUserHeading: true
         })
 );
-
