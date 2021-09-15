@@ -8,6 +8,7 @@ zoom: 12
 });
 
 map.on('click', 'places', (e) => {
+    console.log (e.originalEvent.clientY);
     
     const coordinates = e.features[0].geometry.coordinates.slice();
     var moveX = e.features[0].geometry.coordinates[0];
@@ -21,13 +22,17 @@ map.on('click', 'places', (e) => {
     var id = shopProp.id;
     
     var markerCheck = document.getElementById("selected-marker");
-    if (markerCheck) {
-        markerCheck.remove();
+        if (markerCheck) {
+            markerCheck.remove();
     };
 
     while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-    coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+        coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
     }
+
+
+
+
 
     const markerHeight = 20;
     const markerRadius = 20;
@@ -42,7 +47,16 @@ map.on('click', 'places', (e) => {
         'left': [markerRadius*2, (markerHeight - markerRadius) * -1],
         'right': [0, (markerHeight - markerRadius) * -1]
     };
-
+    function anchorCheck () {
+        var clientClick = e.originalEvent.clientY;
+        var clientWin = ((document.documentElement.clientHeight-72)/2);
+        console.log(clientClick,clientWin)
+        if (clientClick > (clientWin)) {
+            return "bottom";
+        } else {
+            return "top";
+        }
+    }
     function checkImages (id) {
         var src = "img/"+id+".jpg";
         src.onerror = function() {
@@ -70,7 +84,7 @@ map.on('click', 'places', (e) => {
         }
     }
 
-    new mapboxgl.Popup({offset: popupOffsets, className: 'info-div'})
+    new mapboxgl.Popup({anchor: anchorCheck(), offset: popupOffsets, className: 'info-div'})
     .setLngLat(coordinates)
     .setHTML(
 
