@@ -1,15 +1,14 @@
 mapboxgl.accessToken = 'pk.eyJ1Ijoic3RhcnRzZXZkZXYiLCJhIjoiY2t0NGJzYTFvMHdrbzJucjFnN3I3czZpZSJ9.90wyuWzjUJGVVKDdS5FqdQ';
 
 const map = new mapboxgl.Map({
-container: 'map',
-style: 'mapbox://styles/startsevdev/cktjy3gu04gvl18wb2slmtse1',
-center: [30.308653, 59.939737],
-zoom: 12
+    container: 'map',
+    style: 'mapbox://styles/startsevdev/cktjy3gu04gvl18wb2slmtse1',
+    center: [30.308653, 59.939737],
+    zoom: 12
 });
 
-map.on('click', 'places', (e) => {
 
-    
+map.on('click', 'places', (e) => {
     const coordinates = e.features[0].geometry.coordinates.slice();
     var moveX = e.features[0].geometry.coordinates[0];
     var moveY = e.features[0].geometry.coordinates[1];
@@ -20,7 +19,8 @@ map.on('click', 'places', (e) => {
     var address = shopProp.address;
     var positions = shopProp.positions;
     var id = shopProp.id;
-    console.log(id);
+
+
     var markerCheck = document.getElementById("selected-marker");
         if (markerCheck) {
             markerCheck.remove();
@@ -31,23 +31,12 @@ map.on('click', 'places', (e) => {
     }
 
 
-
-
-
-    const markerHeight = 20;
-    const markerRadius = 20;
-    const linearOffset = 20;
     const popupOffsets = {
         'top': [20, 20],
-        'top-left': [20, 20],
-        'top-right': [20, 20],
-        'bottom': [20, -markerHeight],
-        'bottom-left': [linearOffset, (markerHeight - markerRadius + linearOffset) * -1],
-        'bottom-right': [linearOffset, (markerHeight - markerRadius + linearOffset) * -1],
-        'left': [markerRadius*2, (markerHeight - markerRadius) * -1],
-        'right': [0, (markerHeight - markerRadius) * -1]
+        'bottom': [20, -20],
     };
 
+    //фунция расположения popup
     function anchorCheck () {
         var clientClick = e.originalEvent.clientY;
         var clientWin = ((document.documentElement.clientHeight-72)/2);
@@ -58,14 +47,6 @@ map.on('click', 'places', (e) => {
             return "top";
         }
     }
-
-    function checkImages (id) {
-        var src = "img/"+id+".jpg";
-        src.onerror = function() {
-            src = "img/"+id+".png";
-        };
-        return src;
-    };
 
     function checkStatus (status) {
         switch (status) {
@@ -85,16 +66,20 @@ map.on('click', 'places', (e) => {
         }
     }
 
+
+    
     new mapboxgl.Popup({anchor: anchorCheck(), offset: popupOffsets, className: 'info-div'})
     .setLngLat(coordinates)
     .setHTML(
 
         `<div class="info">
 
-            <div class="img"><img class="background"src=${checkImages(id)}></img></div>
+            <div class="img">
+                <img class="background"src=${'img/'+id+'.jpg'}></img>
+            </div>
 
             <div class="card">
-            <a class="link" href=${link}><img class ="instagram" src="icon/instagram.png"></img></a>
+                <a class="link" href=${link}><img class ="instagram" src="icon/instagram.png"></img></a>
                 <div class="status" style="color:${checkStatus(status)}">${status}</div>
                 <div class="name">${name}</div>
                 <div class="address">${address}</div>
@@ -113,44 +98,49 @@ map.on('click', 'places', (e) => {
     .setLngLat([moveX, moveY])
     .addTo(map);   
 
-//ФУНКЦИЯ ЧЕК РАЗМЕРА ОКНА
-    $(document).ready(function () {
-        updateContainer();
-        $(window).resize(function() {
-            updateContainer();
-        });
-    });
+
     
-//ПОЗИЦИОНИРОВАНИЕ МОБ popup
-    function updateContainer(){  
-        if (window.innerWidth <= 820) {
-            var mobilePopUp = $(".mapboxgl-popup");
-            mobilePopUp.attr('style', 'top: '+($(window).height() - ((mobilePopUp.height())) - 8 + ((mobilePopUp.height()/2)-60))+'px !important');
-        } 
-    };
 });
 
 
 
 // Change the cursor to a pointer when the mouse is over the places layer.
-    map.on('mouseenter', 'places', () => {
+map.on('mouseenter', 'places', () => {
     map.getCanvas().style.cursor = 'pointer';
-    });
+});
 
 // Change it back to a pointer when it leaves.
-    map.on('mouseleave', 'places', () => {
+map.on('mouseleave', 'places', () => {
     map.getCanvas().style.cursor = '';
-    });
+});
 
 // Add geolocate control to the map.
-    map.addControl(
-        new mapboxgl.GeolocateControl({
-        positionOptions: {
-        enableHighAccuracy: true
-        },
+map.addControl(
+    new mapboxgl.GeolocateControl({
+    positionOptions: {
+    enableHighAccuracy: true
+    },
 // When active the map will receive updates to the device's location as it changes.
-        trackUserLocation: true,
+    trackUserLocation: true,
 // Draw an arrow next to the location dot to indicate which direction the device is heading.
-        showUserHeading: true
-        })
+    showUserHeading: true
+    })
 );
+
+//функция listener size window
+$(document).ready(function () {
+    updateContainer();
+    $(window).resize(function() {
+            updateContainer();
+    });
+});
+
+//функция позиционирования мобильного popup
+function updateContainer(){  
+    var mobilePopUp = $(".mapboxgl-popup");
+    if (window.innerWidth <= 820) {
+        mobilePopUp.attr('style', 'top: '+($(window).height() - ((mobilePopUp.height())) - 8 + ((mobilePopUp.height()/2)-60))+'px !important');
+    } else {
+        mobilePopUp.attr('style', 'top: 0 !important');
+    }
+};

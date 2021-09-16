@@ -130,7 +130,7 @@ li a:hover {
 .mapboxgl-popup {
     max-width: 280px !important;
     left: -20px !important;
-    top: 0 !important;
+    z-index: 3;
 }
 
 .mapboxgl-popup-tip, .mapboxgl-popup-close-button {
@@ -146,7 +146,8 @@ li a:hover {
             box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.1) !important;
 }
 .mapboxgl-ctrl-top-right {
-    top: calc(50% - (60px)) !important; 
+    top: calc(50% - (60px)) !important;
+    z-index: 2;
 }
 .mapboxgl-ctrl {
     border-radius: 50% !important;
@@ -204,7 +205,6 @@ li a:hover {
             font-weight: 600;
             font-size: 12px;
             line-height: 17px;
-            opacity: 0.8;
             letter-spacing: 0.02em;
             text-transform: uppercase;
             margin-bottom: 4px;
@@ -239,7 +239,6 @@ li a:hover {
             position: absolute;
             top: 292px;
             left: 243px;
-            z-index: 23;
             /* background-image: url(icon/instagram.png);
             background-repeat: no-repeat; */
         }
@@ -275,7 +274,6 @@ li a:hover {
             -ms-transform: translate(-50%, -50%) !important;
                 transform: translate(-50%, -50%) !important;
         top: -20% !important;
-        /* bottom: -50px !important; */
         left: 50% !important;
         margin-left: auto;
         margin-right: auto;
@@ -542,7 +540,7 @@ li a:hover {
     list-style: none;
     text-align: right;
     background-color: #ffffff;
-    z-index: 1;
+    z-index: 4;
   }
 
   /* элементы меню */
@@ -552,7 +550,6 @@ li a:hover {
     margin-right: 60px;
     margin-bottom: 20px;
     text-decoration: none;
-    z-index: 1;
   }
 
   #toggle-menu:checked ~ .toggle-btn > span {
