@@ -97,12 +97,12 @@ map.on('click', 'places', (e) => {
     new mapboxgl.Marker(marker)
     .setLngLat([moveX, moveY])
     .addTo(map);   
-
-
-    
+    if ((window.innerWidth <= 820)) {
+        updateContainer();
+    };  
 });
 
-
+updateContainer();
 
 // Change the cursor to a pointer when the mouse is over the places layer.
 map.on('mouseenter', 'places', () => {
@@ -140,7 +140,7 @@ function updateContainer(){
     var mobilePopUp = $(".mapboxgl-popup");
     if (window.innerWidth <= 820) {
         mobilePopUp.attr('style', 'top: '+($(window).height() - ((mobilePopUp.height())) - 8 + ((mobilePopUp.height()/2)-60))+'px !important');
-    } else {
+    } else if (window.innerWidth >= 820) {
         mobilePopUp.attr('style', 'top: 0 !important');
     }
 };
