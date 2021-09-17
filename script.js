@@ -66,8 +66,6 @@ map.on('click', 'places', (e) => {
         }
     }
 
-
-    
     new mapboxgl.Popup({anchor: anchorCheck(), offset: popupOffsets, className: 'info-div'})
     .setLngLat(coordinates)
     .setHTML(
@@ -91,20 +89,19 @@ map.on('click', 'places', (e) => {
     )
     .addTo(map);
 
-
     var marker = document.createElement('div');
     marker.id = 'selected-marker';
     new mapboxgl.Marker(marker)
-    .setLngLat([moveX, moveY])
-    .addTo(map);   
+        .setLngLat([moveX, moveY])
+        .addTo(map); 
+
     $(function(){
         if ((window.innerWidth <= 820)) {
             updateContainer();
         };  
     });
-});
 
-updateContainer();
+});
 
 // Change the cursor to a pointer when the mouse is over the places layer.
 map.on('mouseenter', 'places', () => {
@@ -132,8 +129,9 @@ map.addControl(
 //функция listener size window
 $(document).ready(function () {
     updateContainer();
+
     $(window).resize(function() {
-            updateContainer();
+        updateContainer();
     });
 });
 
@@ -142,8 +140,12 @@ function updateContainer(){
     var mobilePopUp = $(".mapboxgl-popup");
     if (window.innerWidth <= 820) {
         mobilePopUp.attr('style', 'top: '+($(window).height() - ((mobilePopUp.height())) - 8 + ((mobilePopUp.height()/2)-60))+'px !important');
-        console.log('top: '+($(window).height() - ((mobilePopUp.height())) - 8 + ((mobilePopUp.height()/2)-60))+'px !important');
     } else if (window.innerWidth >= 820) {
         mobilePopUp.attr('style', 'top: 0 !important');
     }
 };
+
+
+// $(document).bind('mousewheel',function() {
+//     console.log(map.getZoom());
+// });
