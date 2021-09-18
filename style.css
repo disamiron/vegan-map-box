@@ -364,7 +364,7 @@ ul {
         word-wrap: break-word; 
     }
     
-    .card a {
+    .card .link {
         position: absolute;
         width: 50px;
         height: 50px;
