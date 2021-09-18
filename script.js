@@ -66,7 +66,7 @@ map.on('click', 'places', (e) => {
         }
     }
 
-    new mapboxgl.Popup({anchor: anchorCheck(), offset: popupOffsets, className: 'info-div'})
+    var popup = new mapboxgl.Popup({anchor: anchorCheck(), offset: popupOffsets, className: 'info-div'})
     .setLngLat(coordinates)
     .setHTML(
 
@@ -79,7 +79,8 @@ map.on('click', 'places', (e) => {
             <div class="card">
                 <a class="link" href=${link}><img class ="instagram" src="icon/instagram.png"></img></a>
                 <div class="status" style="color:${checkStatus(status)}">${status}</div>
-                <div class="name">${name}</div>
+                <div class="name"><a href="geo:${moveX},${moveY}">${name}</a></div>
+
                 <div class="address">${address}</div>
                 <div class="positions">${positions}</div>
             </div>
@@ -88,7 +89,7 @@ map.on('click', 'places', (e) => {
     
     )
     .addTo(map);
-
+                // <div class="name"><a href=${link}>${name}</a></div>
     var marker = document.createElement('div');
     marker.id = 'selected-marker';
     new mapboxgl.Marker(marker)
@@ -100,7 +101,13 @@ map.on('click', 'places', (e) => {
             updateContainer();
         };  
     });
-
+    var currentZoom = map.getZoom();
+    $(function(){
+        map.on('zoom', () => {
+            if (map.getZoom() > currentZoom + 10 || map.getZoom() < currentZoom - 3)
+            popup.remove();
+        })
+    })
 });
 
 // Change the cursor to a pointer when the mouse is over the places layer.

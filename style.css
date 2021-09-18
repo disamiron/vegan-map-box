@@ -224,7 +224,7 @@ ul {
             opacity: 0.6;
         }
 
-        .card a {
+        .card .link {
             position: absolute;
             top: 292px;
             left: 243px;
