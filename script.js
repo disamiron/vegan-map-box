@@ -155,9 +155,9 @@ function updateContainer(){
 //адаптивная ссылка
 function linkMaps (moveX,moveY) {
     var userDeviceArray = [
-        {device: 'Android', platform: /Android/, link: "geo:"},
-        {device: 'iPhone', platform: /iPhone/, link: "http://maps.apple.com/?ll="},
-        {device: 'iPad', platform: /iPad/, link: "http://maps.apple.com/?ll="}
+        {device: 'Android', platform: /Android/, link: "geo:0,0?q="},
+        {device: 'iPhone', platform: /iPhone/, link: "maps://?q="},
+        {device: 'iPad', platform: /iPad/, link: "maps://?q="}
     ];
     
     var platform = navigator.userAgent;
