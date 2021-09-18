@@ -156,8 +156,8 @@ function updateContainer(){
 function linkMaps (moveX,moveY) {
     var userDeviceArray = [
         {device: 'Android', platform: /Android/, link: "geo:"},
-        {device: 'iPhone', platform: /iPhone/, link: "maps:"},
-        {device: 'iPad', platform: /iPad/, link: "maps:"}
+        {device: 'iPhone', platform: /iPhone/, link: "http://maps.apple.com/?ll="},
+        {device: 'iPad', platform: /iPad/, link: "http://maps.apple.com/?ll="}
     ];
     
     var platform = navigator.userAgent;
