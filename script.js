@@ -79,7 +79,7 @@ map.on('click', 'places', (e) => {
             <div class="card">
                 <a class="link" href=${link}><img class ="instagram" src="icon/instagram.png"></img></a>
                 <div class="status" style="color:${checkStatus(status)}">${status}</div>
-                <div class="name"><a href="geo:${moveX},${moveY}">${name}</a></div>
+                <div class="name"><a href="geo:${moveY},${moveX}">${name}</a></div>
 
                 <div class="address">${address}</div>
                 <div class="positions">${positions}</div>
