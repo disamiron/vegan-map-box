@@ -161,19 +161,13 @@ function linkMaps (moveX,moveY) {
     ];
     
     var platform = navigator.userAgent;
-    
 
-        for (var i in userDeviceArray) {
-            console.log(userDeviceArray[i].platform.test(platform));
-            if (userDeviceArray[i].platform.test(platform)) {
-                
-                return userDeviceArray[i].link + moveY + "," + moveX;
-     
-            } 
-            
-        }
-        return "https://maps.google.com?daddr=" + moveY  + "," + moveX;
-
+    for (var i in userDeviceArray) {
+        if (userDeviceArray[i].platform.test(platform)) {
+            return userDeviceArray[i].link + moveY + "," + moveX;
+        } 
+    }
+    return "https://maps.google.com?daddr=" + moveY  + "," + moveX;
 }
 
 
