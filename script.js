@@ -19,8 +19,7 @@ map.on('click', 'places', (e) => {
     var address = shopProp.address;
     var positions = shopProp.positions;
     var id = shopProp.id;
-
-
+    console.log(e.features[0]);
     var markerCheck = document.getElementById("selected-marker");
         if (markerCheck) {
             markerCheck.remove();
@@ -29,7 +28,6 @@ map.on('click', 'places', (e) => {
     while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
         coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
     }
-
 
     const popupOffsets = {
         'top': [20, 20],
@@ -101,13 +99,25 @@ map.on('click', 'places', (e) => {
             updateContainer();
         };  
     });
+
     var currentZoom = map.getZoom();
     $(function(){
-        map.on('zoom', () => {
-            if (map.getZoom() > currentZoom + 10 || map.getZoom() < currentZoom - 3)
-            popup.remove();
-        })
-    })
+        if ((window.innerWidth > 820)) {
+
+            map.on('dragend', function() {
+                if (popup) {
+                    popup.remove();
+                }
+            });
+
+            map.on('zoom', () => {
+                if (map.getZoom() > currentZoom + 0.2 || map.getZoom() < currentZoom - 0.2)
+                popup.remove();
+            })
+    
+        }
+    });
+
 });
 
 // Change the cursor to a pointer when the mouse is over the places layer.
@@ -119,6 +129,9 @@ map.on('mouseenter', 'places', () => {
 map.on('mouseleave', 'places', () => {
     map.getCanvas().style.cursor = '';
 });
+
+
+
 
 // Add geolocate control to the map.
 map.addControl(
@@ -167,7 +180,8 @@ function linkMaps (moveX,moveY) {
             return userDeviceArray[i].link + moveY + "," + moveX;
         } 
     }
-    return "https://maps.google.com?daddr=" + moveY  + "," + moveX;
+    return "https://yandex.ru/maps/?whatshere[point]=" + moveX  + "," + moveY + "&whatshere[zoom]=13";
 }
+
 
 
