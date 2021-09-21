@@ -2,7 +2,7 @@ mapboxgl.accessToken = 'pk.eyJ1Ijoic3RhcnRzZXZkZXYiLCJhIjoiY2t0NGJzYTFvMHdrbzJuc
 
 const map = new mapboxgl.Map({
     container: 'map',
-    style: 'mapbox://styles/startsevdev/cktjy3gu04gvl18wb2slmtse1',
+    style: 'mapbox://styles/startsevdev/cktu9r3nj13ec17ok0q2f80zt',
     center: [30.308653, 59.939737],
     zoom: 12
 });
@@ -19,7 +19,8 @@ map.on('click', 'places', (e) => {
     var address = shopProp.address;
     var positions = shopProp.positions;
     var id = shopProp.id;
-    console.log(e.features[0]);
+    var markerX =  shopProp.longitude1;
+    var markerY =  shopProp.latitude1;
     var markerCheck = document.getElementById("selected-marker");
         if (markerCheck) {
             markerCheck.remove();
@@ -50,17 +51,26 @@ map.on('click', 'places', (e) => {
         switch (status) {
             case "100% VEGAN":
                 positions = "";
-                return "#1B7340"
+                return `<div class="status" style="color:#1B7340">${status}</div>`
+                
             case "ТОЛЬКО КУХНЯ":
                 positions = "";
-                return "#1A8B9D"
-            case "БОЛЬШЕ ТРЁХ БЛЮД":
+                return `<div class="status" style="color:#1A8B9D">${status}</div>`
+            case "БОЛЬШЕ 3 БЛЮД":
                 positions = "";
-                return "#2D73DB"
-            case "ДО ТРЁХ БЛЮД":
-                return "rgba(16, 16, 16, 0.5)"
+                return `<div class="status" style="color:#2D73DB">${status}</div>`
+            case "ДО 3 БЛЮД":
+                return `<div class="status" style="color:rgba(16, 16, 16, 0.5)">${status}</div>`
+            case "UTROO":
+                return `<a class="utroo" title="Веган-завтраки в рамках фестиваля UTROO" href="https://www.instagram.com/p/CTjbJV3MiDR/">
+                            <div class="status" style="color:rgba(16, 16, 16, 0.7)">${status}</div>
+                        </a>`
+            case "UTROO BAKERY ":
+                return `<a class="utroo" title="Веган-завтраки в рамках фестиваля UTROO (только десерты)" href="https://www.instagram.com/p/CTjbJV3MiDR/">
+                            <div class="status" style="color:rgba(16, 16, 16, 0.7)">${status}</div>
+                        </a>`
             default:
-                return "rgba(16, 16, 16, 0.5)"
+                return `<div class="status" style="color:rgba(16, 16, 16, 0.5)">${status}</div>`
         }
     }
 
@@ -73,11 +83,13 @@ map.on('click', 'places', (e) => {
             <div class="img">
                 <img class="background"src=${'img/'+id+'.jpg'}></img>
             </div>
-
+  
             <div class="card">
-                <a class="link" href=${link}><img class ="instagram" src="icon/instagram.png"></img></a>
-                <div class="status" style="color:${checkStatus(status)}">${status}</div>
-                <div class="name"><a href=${linkMaps (moveX,moveY)}>${name}</a></div>
+                <a class="geo" href=${linkMaps (moveX,moveY)} title="Маршрут до заведения ${name}"><img class ="instagram" src="icon/directions.png"></img></a>
+                <a class="link" href=${link} title="Instagram ${name}"><img class ="instagram" src="icon/instagram.png"></img></a>
+         
+                ${checkStatus(status)}
+                <div class="name">${name}</div>
 
                 <div class="address">${address}</div>
                 <div class="positions">${positions}</div>
@@ -91,7 +103,7 @@ map.on('click', 'places', (e) => {
     var marker = document.createElement('div');
     marker.id = 'selected-marker';
     new mapboxgl.Marker(marker)
-        .setLngLat([moveX, moveY])
+        .setLngLat([markerX, markerY])
         .addTo(map); 
 
     $(function(){
@@ -101,15 +113,16 @@ map.on('click', 'places', (e) => {
     });
 
     var currentZoom = map.getZoom();
+    
     $(function(){
         if ((window.innerWidth > 820)) {
 
-            map.on('dragend', function() {
-                if (popup) {
-                    popup.remove();
-                }
-            });
-
+            // map.on('dragend', function() {
+            //     if (popup) {
+            //         popup.remove();
+            //     }
+            // });
+            
             map.on('zoom', () => {
                 if (map.getZoom() > currentZoom + 0.2 || map.getZoom() < currentZoom - 0.2)
                 popup.remove();
@@ -159,7 +172,7 @@ $(document).ready(function () {
 function updateContainer(){  
     var mobilePopUp = $(".mapboxgl-popup");
     if (window.innerWidth <= 820) {
-        mobilePopUp.attr('style', 'top: '+($(window).height() - ((mobilePopUp.height())) - 8 + ((mobilePopUp.height()/2)-60))+'px !important');
+        mobilePopUp.attr('style', 'top: '+($(window).height() - ((mobilePopUp.height())) + ((mobilePopUp.height()/2)-56))+'px !important');
     } else if (window.innerWidth >= 820) {
         mobilePopUp.attr('style', 'top: 0 !important');
     }
