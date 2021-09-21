@@ -19,8 +19,6 @@ map.on('click', 'places', (e) => {
     var address = shopProp.address;
     var positions = shopProp.positions;
     var id = shopProp.id;
-    var markerX =  shopProp.longitude1;
-    var markerY =  shopProp.latitude1;
     var markerCheck = document.getElementById("selected-marker");
         if (markerCheck) {
             markerCheck.remove();
@@ -63,11 +61,11 @@ map.on('click', 'places', (e) => {
                 return `<div class="status" style="color:rgba(16, 16, 16, 0.5)">${status}</div>`
             case "UTROO":
                 return `<a class="utroo" title="Веган-завтраки в рамках фестиваля UTROO" href="https://www.instagram.com/p/CTjbJV3MiDR/">
-                            <div class="status" style="color:rgba(16, 16, 16, 0.7)">${status}</div>
+                            <div class="status" style="color:rgba(16, 16, 16, 0.7)">ЗАВТРАКИ</div>
                         </a>`
-            case "UTROO BAKERY ":
+            case "UTROO BAKERY":
                 return `<a class="utroo" title="Веган-завтраки в рамках фестиваля UTROO (только десерты)" href="https://www.instagram.com/p/CTjbJV3MiDR/">
-                            <div class="status" style="color:rgba(16, 16, 16, 0.7)">${status}</div>
+                            <div class="status" style="color:rgba(16, 16, 16, 0.7)">ЗАВТРАКИ</div>
                         </a>`
             default:
                 return `<div class="status" style="color:rgba(16, 16, 16, 0.5)">${status}</div>`
@@ -85,8 +83,8 @@ map.on('click', 'places', (e) => {
             </div>
   
             <div class="card">
-                <a class="geo" href=${linkMaps (moveX,moveY)} title="Маршрут до заведения ${name}"><img class ="instagram" src="icon/directions.png"></img></a>
-                <a class="link" href=${link} title="Instagram ${name}"><img class ="instagram" src="icon/instagram.png"></img></a>
+                <a class="geo" href=${linkMaps (moveX,moveY)} title="Маршрут до заведения"><img id="directions" class ="instagram" src="icon/directions.png"></img></a>
+                <a class="link" href=${link} title="Instagram"><img id="instagram" class ="instagram" src="icon/instagram.png"></img></a>
          
                 ${checkStatus(status)}
                 <div class="name">${name}</div>
@@ -103,8 +101,14 @@ map.on('click', 'places', (e) => {
     var marker = document.createElement('div');
     marker.id = 'selected-marker';
     new mapboxgl.Marker(marker)
-        .setLngLat([markerX, markerY])
+        .setLngLat([moveX, moveY])
         .addTo(map); 
+        var currentZoom = map.getZoom();
+
+
+        
+
+
 
     $(function(){
         if ((window.innerWidth <= 820)) {
@@ -112,16 +116,25 @@ map.on('click', 'places', (e) => {
         };  
     });
 
-    var currentZoom = map.getZoom();
     
+
     $(function(){
         if ((window.innerWidth > 820)) {
 
-            // map.on('dragend', function() {
-            //     if (popup) {
-            //         popup.remove();
-            //     }
-            // });
+            var geo = document.getElementById("directions");
+            geo.addEventListener("mouseover", function() { 
+                geo.src="icon/directions-hover.png";
+            });
+            geo.addEventListener("mouseout", function() { 
+                geo.src="icon/directions.png";
+            });
+            var inst = document.getElementById("instagram");
+            inst.addEventListener("mouseover", function() { 
+                inst.src="icon/instagram-hover.png";
+            });
+            inst.addEventListener("mouseout", function() { 
+                inst.src="icon/instagram.png";
+            });
             
             map.on('zoom', () => {
                 if (map.getZoom() > currentZoom + 0.2 || map.getZoom() < currentZoom - 0.2)
